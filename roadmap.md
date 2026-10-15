@@ -59,7 +59,7 @@ Greenhouse: containerized fleet simulator, telemetry pipeline, provisioning and 
 YO layers, recipes, classes, bbappends, machine/distro/image configuration, sstate and task hashes, devtool, kernel configuration and device tree, SDK, licensing, SBOM, reproducibility.
 
 Greenhouse: a custom layer that packages Greenhouse into a QEMU image with init scripts. Long builds run in the background, outside sessions.
-Status: waiting on a WSL restart before environment checks.
+Environment: release 6.0 (wrynose) via `bitbake-setup`; see `docs/setup.md`.
 
 ## Phase 7 — Synthesis and mastery
 

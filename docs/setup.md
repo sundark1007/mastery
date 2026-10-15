@@ -56,6 +56,14 @@ A local-only pre-commit guard (`.git/hooks/pre-commit` with a term list in `.git
 
 `.gitattributes` forces LF line endings so hook scripts and labs run unchanged under bash and WSL.
 
-## Pending
+## Yocto
 
-Yocto environment checks (disk space, host packages, first background build) run once WSL has been restarted.
+Release 6.0 (wrynose, LTS), set up with `bitbake-setup` under `~/yocto` in WSL (Linux filesystem, not `/mnt/c`).
+
+| Step | Command |
+|---|---|
+| Host packages and locale (one time, sudo) | `bash /mnt/c/Users/sundark/mastery/scripts/yocto/host-setup.sh` |
+| Layers (one time) | `cd ~/yocto && ./bitbake/bin/bitbake-setup init --non-interactive poky-wrynose poky distro/poky machine/qemux86-64` |
+| Build | `bash /mnt/c/Users/sundark/mastery/scripts/yocto/build.sh [target]` |
+
+`build.sh` strips Windows entries from `PATH` (BitBake's sanity checks reject them), caps parallelism at 8 threads because WSL has about 15 GB of RAM (`YOCTO_THREADS` overrides), and logs each build under `build/logs/`. First builds take hours; run them outside sessions.
