@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "date +%s > \"C:/Users/sundark/mastery/.git/session-start\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"C:/Users/sundark/mastery/scripts/checkpoint_reminder.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"C:/Users/sundark/mastery/scripts/autosave.sh\" --throttle 600 autosave"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"C:/Users/sundark/mastery/scripts/autosave.sh\" \"session end\""
+          }
+        ]
+      }
+    ]
+  }
+}
