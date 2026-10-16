@@ -16,6 +16,7 @@
 ## Hooks (`.claude/settings.json`)
 
 - `Stop` (10-minute throttle) and `SessionEnd` run `scripts/autosave.sh`: commit and push.
+- `Stop` also runs `scripts/timer.sh mark`; `UserPromptSubmit` runs `scripts/timer.sh report`, which injects the `[timer]` response-time line used in interview mode.
 - `UserPromptSubmit` runs `scripts/checkpoint_reminder.sh`. When a "CHECKPOINT DUE" reminder appears, checkpoint per `AGENTS.md` before replying.
 
 ## Subagents (`.claude/agents/`)

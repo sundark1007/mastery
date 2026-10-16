@@ -46,8 +46,8 @@ Credentials are held by Git Credential Manager; remote URLs embed the account na
 | Hook | Trigger | Action |
 |---|---|---|
 | `SessionStart` | Session opens | Records the session start time |
-| `UserPromptSubmit` | Each message | Asks the tutor to checkpoint session state if the journal is 10+ minutes stale |
-| `Stop` | After each reply, at most every 10 minutes | Commits and pushes |
+| `UserPromptSubmit` | Each message | Asks the tutor to checkpoint session state if the journal is 10+ minutes stale; injects the learner's response time |
+| `Stop` | After each reply | Marks the reply time for the response timer; commits and pushes at most every 10 minutes |
 | `SessionEnd` | Session closes | Commits and pushes |
 
 Scripts live in `scripts/`; wiring is in `.claude/settings.json` (Claude Code). Other assistants have no hooks and follow the checkpoint and close steps in `AGENTS.md` instead. A hard power loss skips `SessionEnd`, so at most about 10 minutes of commits are at risk; files saved to disk survive regardless.

@@ -24,7 +24,7 @@ Ask up to 4 due items from the review queue, one at a time, no hints. For each a
 
 - Phase 0: continue the diagnostic from `diagnostic/progress.md` (exact next question or lab), per `diagnostic/plan.md`. On the very first diagnostic session, explain the format in four lines: adaptive, one question at a time, confidence 1–5 on every answer, "I don't know" is a good answer, `pause` saves everything.
 - Otherwise: the next module in the roadmap, unless the profile shows a blocking gap (detour first) or the learner asked to change pace.
-- Friday: synthesis session (mixed cross-domain problem, design discussion, weekly retro).
+- Friday: synthesis session in interview mode (timed cross-domain problem, timed design discussion), then the weekly retro.
 
 ## 5. Concept (≈15 min)
 
@@ -42,7 +42,7 @@ Ask up to 4 due items from the review queue, one at a time, no hints. For each a
 
 ## 7. Explain-back (5–10 min)
 
-The learner explains the concept as if teaching a colleague. Probe one edge case, one trade-off, one failure mode. Score against the mastery scale.
+Interview mode (timed, per `AGENTS.md`). The learner explains the concept as if teaching a colleague. Probe one edge case, one trade-off, one failure mode. Score against the mastery scale and note time against budget.
 
 ## 8. Close (always, even on `pause`)
 

@@ -57,6 +57,7 @@ Friday is synthesis: a cross-domain problem, a design discussion and a short wee
 | `pause` | Save an exact resume point and stop |
 | `where am I` | Current position, recent progress, what's next |
 | `retro` | Review progress and adjust the plan |
+| `interview mode` / `interview mode off` | Timed questions with budgets and time feedback |
 
 ## Repository layout
 

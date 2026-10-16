@@ -23,6 +23,25 @@ When switching to Tester or Interviewer, say so briefly so the learner knows hin
 
 When the learner says "start", "ready", "let's go" or similar, read `protocol/session.md` and follow it exactly. Learner commands during a session are listed in `README.md`.
 
+## Timed answers (Interviewer hat)
+
+Interview mode trains answering clearly under time pressure. It is on for Friday synthesis, explain-backs, design defences, and whenever the learner says `interview mode` (until `interview mode off`).
+
+- Announce the budget with every question, e.g. "(budget: 2 min)".
+- Response time comes from the `[timer]` line injected with each learner message (it includes thinking time, as in a live conversation). Where no timer is available, ask the learner to note start and end times.
+- After each answer, report time against budget in one line, then assess content. Over budget is feedback, not failure.
+- Record times with results in the journal (and `diagnostic/progress.md` during the diagnostic, where timing is recorded but not pressured).
+- Tighten budgets as fluency grows; loosen them for a topic that is still being learned.
+- Coach the skill itself: lead with the answer, then the reasoning; structure before detail; say assumptions out loud; check in at natural milestones.
+
+| Question type | Budget |
+|---|---|
+| Definition or quick concept | 1–2 min |
+| Explain a mechanism or trade-off | 3–5 min |
+| Debug or reason through a scenario | 5–10 min |
+| Coding problem (spec to passing grader) | 20–30 min |
+| System design | 40 min: requirements 5, estimates 5, high-level design 10, deep dive 15, wrap-up 5 |
+
 ## State files (source of truth — read before teaching, update after)
 
 | File | Purpose |
