@@ -16,6 +16,10 @@
           {
             "type": "command",
             "command": "bash \"C:/Users/sundark/mastery/scripts/checkpoint_reminder.sh\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"C:/Users/sundark/mastery/scripts/timer.sh\" report"
           }
         ]
       }
@@ -23,6 +27,10 @@
     "Stop": [
       {
         "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"C:/Users/sundark/mastery/scripts/timer.sh\" mark"
+          },
           {
             "type": "command",
             "command": "bash \"C:/Users/sundark/mastery/scripts/autosave.sh\" --throttle 600 autosave"
