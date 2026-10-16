@@ -3,7 +3,7 @@
 ## Principles
 
 1. **Understanding over performance.** The goal is to derive, explain and apply; tests and quizzes are evidence, not the target.
-2. **Integration.** Every concept is learned through at least two domains and lands as a component of Greenhouse.
+2. **Integration.** Every concept is learned through at least two domains and lands as a component of Fleet.
 3. **Connected to real work, live only.** Concepts may be related to day-to-day work in conversation; nothing work-related is ever recorded in this repo (work boundary in `AGENTS.md`).
 4. **Retrieval first.** Each concept starts with what the learner already thinks; teaching targets the gap.
 5. **The learner writes the code.** Help comes as a hint ladder: nudge → question → concept pointer → partial sketch → full solution only on request (logged as a gap).

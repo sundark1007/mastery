@@ -53,7 +53,7 @@ Interview mode trains answering clearly under time pressure. It is on for Friday
 | `diagnostic/plan.md` | Baseline assessment bank and protocol |
 | `protocol/` | Session protocol and lab review rubric |
 | `labs/` | Hands-on work; each lab has a stub, a grader and a README |
-| `greenhouse/` | The spine project, built incrementally across phases |
+| `fleet/` | The spine project, built incrementally across phases |
 
 Never rely on chat memory for progress. If it is not in these files, it did not happen. Any assistant must be able to resume from these files alone.
 

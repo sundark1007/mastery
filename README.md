@@ -19,9 +19,9 @@ The AI tutor switches between friend, guide, teacher, colleague, tester and inte
 
 Domains are taught together, never in isolation. A heap is learned as the timer queue of a scheduler, written in idiomatic Python, and reviewed against design principles. A ring buffer is learned as the receive path of a serial driver.
 
-## The spine project: Greenhouse
+## The spine project: Fleet
 
-Every phase adds real components to one system: a simulated greenhouse climate controller with sensor and actuator buses, protocol codecs, an event bus, a rules engine, a scheduler, a supervisor, a state store, a cloud bridge and a broker cluster. Later parts move to C and get packaged into a Yocto image. By the end, every concept exists as working, tested code in one coherent design. See [`roadmap.md`](roadmap.md).
+Every phase adds real components to one system: a simulated datacenter server fleet. Each server runs an embedded management controller (sensors, fan control, watchdog, firmware updates, management API); a control plane manages the fleet; and fleet state and telemetry live in FleetStore, a distributed storage engine built from scratch. Later parts move to C and get packaged into a Yocto image. By the end, every concept exists as working, tested code in one coherent design. See [`roadmap.md`](roadmap.md).
 
 ## Quick start
 
@@ -75,7 +75,7 @@ learner/
 journal/                  One entry per session: evidence, decisions, resume point
 diagnostic/plan.md        Baseline assessment protocol and question bank
 labs/                     Hands-on exercises, each with a spec, stub and grader
-greenhouse/               The spine project
+fleet/                    The spine project
 docs/                     Setup and learning-model documentation
 local/                    Machine-specific context, git-ignored, never committed
 .claude/

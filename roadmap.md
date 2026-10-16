@@ -2,16 +2,23 @@
 
 A living plan. Phases set direction, not deadlines; order and depth adapt to evidence in `learner/profile.md`. Changes are recorded in the journal.
 
-## Spine project: Greenhouse
+## Spine project: Fleet
 
-A simulated greenhouse climate controller built in Python (later partly in C and packaged with Yocto). Every phase adds real components, so each concept ends up as working, tested code inside one coherent system. All design comes from first principles and public references; see the work boundary in `AGENTS.md`.
+A simulated datacenter server fleet, built in Python (later partly in C and packaged with Yocto). Three subsystems grow together, so every concept ends up as working, tested code inside one coherent system:
+
+- **Node controller:** the embedded management controller in every server: sensors, fan control, power, watchdog, firmware updates, management API.
+- **FleetStore:** a distributed storage engine built from scratch (log-structured storage, replication, sharding) that holds fleet state and telemetry.
+- **Control plane:** fleet-wide services: inventory, telemetry pipeline, alerting, safe firmware rollouts.
+
+All design comes from first principles and public standards; see the work boundary in `AGENTS.md`.
 
 ```text
- simulated devices ──► bus/protocol layer ──► event bus ──► rules/FSM engine
-        (radio, serial)   (codec, CRC)          (IPC)          (rules)
-                                                  │
-                    scheduler ── supervisor ── state store ── cloud bridge ──► mini broker / cluster
-                    (OS sim)     (restarts)     (cache)        (MQTT)           (distributed)
+ server x N                                     control plane
+ +--------------------------------+            +--------------------------------+
+ | sensors -> bus -> node agent   |-- MQTT --->| ingest -> FleetStore cluster   |
+ | (I2C/PMBus) (codec)  (FSMs)    |<-- REST ---| inventory, rollouts, alerts    |
+ | supervisor, watchdog, updates  |            | (Raft, sharding, replication)  |
+ +--------------------------------+            +--------------------------------+
 ```
 
 ## Domain codes
@@ -28,37 +35,37 @@ PY Python · OO OOP & design · EP engineering practice (testing, typing, clean 
 
 PY data model, iterators/generators, decorators, context managers, typing, dataclasses, packaging · OO SOLID, composition, dependency injection, key patterns (Strategy, Observer, State, Adapter, Command) · EP TDD, property-based testing, fakes vs mocks · DS dynamic array, linked lists, ring buffer, hash map, heap, trees · config-driven design with validated schemas.
 
-Greenhouse: config loader with schema validation, device registry, ring-buffered serial reader, timer heap, in-process event bus, table-driven FSM.
+Fleet: node-agent config schema, sensor registry, ring-buffered samples, polling timer heap, event bus, table-driven fan-control FSM · FleetStore: skip-list memtable, bloom filter, sorted-table file format.
 
 ## Phase 2 — Kernel and concurrency
 
 OS processes, threads, scheduling (RR, MLFQ, CFS/EEVDF), virtual memory, paging, TLB, page replacement, synchronization, deadlock, file systems · PY threading, GIL and free-threading, multiprocessing, asyncio · LX fork/exec, signals, init systems · IO pipes, Unix sockets, shared memory, message queues · AL graph algorithms (deadlock detection, dependency ordering), trees for schedulers, LRU/clock.
 
-Greenhouse: cooperative scheduler, service supervisor with restart policies, multi-process IPC layer, simulated paging memory manager.
+Fleet: agent scheduler, daemon supervisor with restart policies, inter-daemon IPC, simulated paging memory manager · FleetStore: write-ahead log with fsync semantics and crash recovery, background compaction threads, mmap-based reads.
 
 ## Phase 3 — The hardware boundary
 
 CA memory hierarchy, caches, pipelines, branch prediction, memory ordering, atomics, endianness, DMA · EM GPIO, UART/SPI/I2C/RS485, timing, watchdogs, binary protocol design, CRC, firmware update strategies, real-time behaviour · LX syscalls, file descriptors, epoll, /proc and /sys, device model, char drivers, device tree, libgpiod · C and Python interop (ctypes, C extensions).
 
-Greenhouse: binary protocol codec with CRC and framing, half-duplex bus simulator, epoll-driven IO loop, cache simulator, a C component called from Python, a char-device kernel module running in QEMU.
+Fleet: simulated I2C/PMBus sensor bus, binary command protocol with CRC and framing, epoll-driven IO loop, cache simulator, a C sensor driver called from Python, an hwmon-style kernel module in QEMU · FleetStore: on-disk block format (endianness, checksums), cache-friendly layout, page-cache-aware IO.
 
 ## Phase 4 — Networks and distributed systems
 
 NW TCP/IP, sockets, TLS, routing, DHCP, DNS, NAT, policy routing · IO MQTT 3.1.1/5 in depth (QoS, sessions, retained, LWT, shared subscriptions) · DI failure models, clocks, delivery semantics, idempotency, replication, quorums, consensus (Raft), sharding, consistent hashing, transactions and sagas.
 
-Greenhouse: socket transport, mini MQTT broker with QoS 1 and persistent sessions, store-and-forward cloud bridge, multi-node controller cluster with Raft leader election.
+Fleet: Redfish-style REST management API, mini MQTT broker with QoS 1 and persistent sessions for telemetry, store-and-forward on the node · FleetStore: Raft replication, consistent-hash sharding and rebalancing, quorum reads and writes, anti-entropy with Merkle trees; the control plane runs on it.
 
 ## Phase 5 — Cloud, IoT and system design
 
 DB relational modelling, indexes, transactions and isolation, MVCC, write-ahead logging, time-series and key-value storage · CL compute/storage/database models, containers and Kubernetes, IAM and device identity, event-driven and serverless patterns, IaC, CI/CD, cost · IO provisioning, fleet management, device twins, OTA · SD estimation, caching, queues and streams, rate limiting, API design, observability, multi-region, disaster recovery.
 
-Greenhouse: containerized fleet simulator, telemetry pipeline, provisioning and OTA services, dashboards and SLOs; full written designs for an IoT fleet platform.
+Fleet: containerized fleet simulator at scale, telemetry pipeline with downsampling and retention, canary firmware rollouts with automatic rollback, inventory and provisioning, dashboards and SLOs · FleetStore: tiered storage to object storage, backups, multi-region replication (RPO/RTO); full written designs for fleet-scale systems.
 
 ## Phase 6 — Yocto and productization
 
 YO layers, recipes, classes, bbappends, machine/distro/image configuration, sstate and task hashes, devtool, kernel configuration and device tree, SDK, licensing, SBOM, reproducibility.
 
-Greenhouse: a custom layer that packages Greenhouse into a QEMU image with init scripts. Long builds run in the background, outside sessions.
+Fleet: a custom layer that packages the node controller (agent, drivers, init scripts) into a QEMU image structured like open-source server-management firmware, plus a FleetStore node image. Long builds run in the background, outside sessions.
 Environment: release 6.0 (wrynose) via `bitbake-setup`; see `docs/setup.md`.
 
 ## Phase 7 — Synthesis and mastery
@@ -77,9 +84,9 @@ Teach-back series, design documents for real work systems, deep dives chosen by 
 - **System design:** a design discussion every other Friday from Phase 1, scaled to the current phase, so design thinking grows all year instead of waiting for Phase 5.
 - **C and systems programming:** a C exercise most weeks mirroring the current concept (memory layout, pointers, undefined behaviour, linking, build systems, gdb, sanitizers); Rust as a later elective.
 - **Debugging and performance:** systematic debugging, profilers (cProfile, py-spy, perf), tracing (strace, ftrace, eBPF), gdb; every phase includes at least one deliberate find-the-bug and find-the-bottleneck lab.
-- **Security:** threat modelling, cryptography fundamentals, secure coding, fuzzing, secure boot and update chains, SBOMs and vulnerability handling, applied to each Greenhouse component.
+- **Security:** threat modelling, cryptography fundamentals, secure coding, fuzzing, secure boot and update chains, SBOMs and vulnerability handling, applied to each Fleet component.
 - **Technical communication:** explain-backs every session; a short design doc or architecture decision record for each phase milestone.
-- **Yocto:** each phase milestone is packaged into the Greenhouse image (recipes, init scripts, kernel modules), so build-system skill grows continuously; Phase 6 is the deep dive.
+- **Yocto:** each phase milestone is packaged into the Fleet images (recipes, init scripts, kernel modules), so build-system skill grows continuously; Phase 6 is the deep dive.
 - **Work tie-ins:** a weekly live "connect" moment in conversation only, never recorded (see the work boundary in `AGENTS.md`).
 
 ## Horizon (forecast, revised quarterly)

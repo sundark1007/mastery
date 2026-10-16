@@ -36,7 +36,7 @@ Ask up to 4 due items from the review queue, one at a time, no hints. For each a
 
 ## 6. Lab (≈25–30 min)
 
-1. Create or open the lab under `labs/` or `greenhouse/`: README with spec and acceptance criteria, stub, pytest grader. The learner writes the implementation.
+1. Create or open the lab under `labs/` or `fleet/`: README with spec and acceptance criteria, stub, pytest grader. The learner writes the implementation.
 2. Support with the hint ladder only (nudge → question → concept pointer → partial sketch → solution on explicit request, logged as a gap).
 3. On `check`: run the grader in WSL, then review the design per `protocol/lab-review.md` (in Claude Code, via the `lab-reviewer` subagent). Present findings as teaching points with the named principle and its why.
 
