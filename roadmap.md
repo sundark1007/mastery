@@ -16,7 +16,7 @@ A simulated greenhouse climate controller built in Python (later partly in C and
 
 ## Domain codes
 
-PY Python · OO OOP & design · EP engineering practice (testing, typing, clean code) · DS data structures · AL algorithms · OS operating systems · LX Linux internals · CA computer architecture · EM embedded & devices · YO Yocto & builds · NW networking · DI distributed systems · SD system design · CL cloud architecture · IO IPC, MQTT & IoT · AI AI-assisted engineering
+PY Python · OO OOP & design · EP engineering practice (testing, typing, clean code) · DS data structures · AL algorithms · OS operating systems · LX Linux internals · CA computer architecture · EM embedded & devices · YO Yocto & builds · NW networking · DI distributed systems · SD system design · CL cloud architecture · IO IPC, MQTT & IoT · AI AI-assisted engineering · CP C and systems programming · SC security · DB databases
 
 ## Phase 0 — Baseline
 
@@ -50,7 +50,7 @@ Greenhouse: socket transport, mini MQTT broker with QoS 1 and persistent session
 
 ## Phase 5 — Cloud, IoT and system design
 
-CL compute/storage/database models, containers and Kubernetes, IAM and device identity, event-driven and serverless patterns, IaC, CI/CD, cost · IO provisioning, fleet management, device twins, OTA · SD estimation, caching, queues and streams, rate limiting, API design, observability, multi-region, disaster recovery.
+DB relational modelling, indexes, transactions and isolation, MVCC, write-ahead logging, time-series and key-value storage · CL compute/storage/database models, containers and Kubernetes, IAM and device identity, event-driven and serverless patterns, IaC, CI/CD, cost · IO provisioning, fleet management, device twins, OTA · SD estimation, caching, queues and streams, rate limiting, API design, observability, multi-region, disaster recovery.
 
 Greenhouse: containerized fleet simulator, telemetry pipeline, provisioning and OTA services, dashboards and SLOs; full written designs for an IoT fleet platform.
 
@@ -74,7 +74,17 @@ Teach-back series, design documents for real work systems, deep dives chosen by 
   - A2 Claude Code fluency: CLAUDE.md, memory, skills, subagents, hooks, MCP, plan mode, `/loop`; the learner builds tooling for this repo.
   - A3 Orchestration: parallel agents, workflows, evaluation loops, knowing when not to use agents.
   - A4 Building with the API: tool use, structured outputs, caching, evals; a real tool for day-to-day engineering (e.g., log triage).
+- **System design:** a design discussion every other Friday from Phase 1, scaled to the current phase, so design thinking grows all year instead of waiting for Phase 5.
+- **C and systems programming:** a C exercise most weeks mirroring the current concept (memory layout, pointers, undefined behaviour, linking, build systems, gdb, sanitizers); Rust as a later elective.
+- **Debugging and performance:** systematic debugging, profilers (cProfile, py-spy, perf), tracing (strace, ftrace, eBPF), gdb; every phase includes at least one deliberate find-the-bug and find-the-bottleneck lab.
+- **Security:** threat modelling, cryptography fundamentals, secure coding, fuzzing, secure boot and update chains, SBOMs and vulnerability handling, applied to each Greenhouse component.
+- **Technical communication:** explain-backs every session; a short design doc or architecture decision record for each phase milestone.
+- **Yocto:** each phase milestone is packaged into the Greenhouse image (recipes, init scripts, kernel modules), so build-system skill grows continuously; Phase 6 is the deep dive.
 - **Work tie-ins:** a weekly live "connect" moment in conversation only, never recorded (see the work boundary in `AGENTS.md`).
+
+## Horizon (forecast, revised quarterly)
+
+At about 5 hours a week (roughly 230 hours a year), the first year typically reaches through Phase 4 at mastery depth, with every continuous thread running throughout. Phases 5–7 form year two. Indicative pacing: Q1 Phases 0–1, Q2 Phase 2, Q3 Phase 3, Q4 Phase 4. The diagnostic replaces this forecast with evidence; strong domains compress, weak ones expand.
 
 ## Review cadence
 

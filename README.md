@@ -10,10 +10,11 @@ Claude acts as friend, guide and teacher. One hour a day, Monday to Friday, no e
 |---|---|
 | Software craft | Python, object-oriented design, clean code and design principles, testing and typing |
 | Computer science | Data structures, algorithms |
-| Systems | Operating systems, Linux internals, computer architecture |
+| Systems | Operating systems, Linux internals, computer architecture, C and systems programming |
 | Devices | Embedded systems, device interfaces and protocols, Yocto |
 | Connected systems | Networking, IPC, MQTT and IoT, distributed systems |
-| Architecture | System design, cloud architecture |
+| Architecture | System design, cloud architecture, databases |
+| Cross-cutting | Security, debugging and performance, technical communication |
 | Leverage | AI-assisted engineering |
 
 Domains are taught together, never in isolation. A heap is learned as the timer queue of a scheduler, written in idiomatic Python, and reviewed against design principles. A ring buffer is learned as the receive path of a serial driver.

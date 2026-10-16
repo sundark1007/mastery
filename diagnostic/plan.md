@@ -22,6 +22,7 @@ Goal: an evidence-based level for every domain, with no guessing about what the 
 | 4 | CA, EM, YO | D5 refactor kata |
 | 5 | NW, IO, DI | — |
 | 6 | SD, CL, AI | D6 design exercise |
+| 7 | CP, SC, DB | — |
 
 Hands-on labs live in `labs/diagnostic/`. Each is time-boxed to ~25 minutes; the time taken and the code quality are both evidence. The learner may run labs between sessions.
 
@@ -64,6 +65,7 @@ IDs are `DOMAIN-LEVEL.n`. Tutor-only guidance in italics.
 - EP-2.2 What is property-based testing, and what kind of bug does it find that example tests miss?
 - EP-3.1 Error handling: exceptions vs return values, fail-fast, retries with exponential backoff and jitter (why jitter?).
 - EP-3.2 Static typing in Python: generics, Protocols, `TypeVar`, what mypy strict catches.
+- EP-3.3 A Python service is slow. How do you find the bottleneck (cProfile, py-spy, perf), and how do you confirm the fix?
 - EP-4.1 What do you look for in a code review, in priority order? How do you manage technical debt deliberately?
 
 ### DS — Data structures
@@ -219,3 +221,39 @@ IDs are `DOMAIN-LEVEL.n`. Tutor-only guidance in italics.
 - AI-3.2 Verifying AI output: tests as oracle, review, failure modes (sycophancy, confident errors).
 - AI-4.1 Building with the API: tool use, structured outputs, prompt caching, evals.
 - AI-4.2 RAG vs fine-tuning vs long context: when each.
+
+### CP — C and systems programming
+
+- CP-1.1 Stack vs heap vs static storage and their lifetimes; what happens when a function returns a pointer to a local.
+- CP-1.2 Pointer arithmetic and arrays; `sizeof` of an array vs of an array parameter.
+- CP-2.1 Undefined behaviour: common sources (signed overflow, out-of-bounds, use-after-free, strict aliasing) and why compilers exploit it.
+- CP-2.2 Preprocessor → compiler → assembler → linker; static vs shared libraries; symbols and relocations.
+- CP-2.3 `const`, `volatile`, `static` (file vs function scope), `extern`.
+- CP-3.1 Valgrind vs AddressSanitizer vs UBSan: what each catches.
+- CP-3.2 Find a crash from a core dump with gdb, step by step.
+- CP-3.3 Make and CMake: incremental builds, dependency tracking; cross-compiling against a sysroot.
+- CP-4.1 ABIs and calling conventions; how Python's `ctypes` calls into C.
+- CP-4.2 Rust's ownership model vs C: which bug classes it removes and at what cost.
+
+### SC — Security
+
+- SC-1.1 Confidentiality, integrity, availability; authentication vs authorization.
+- SC-2.1 Symmetric vs asymmetric cryptography; hash vs MAC vs signature, and where each is used.
+- SC-2.2 Injection, buffer overflow, path traversal, unsafe deserialization: causes and mitigations.
+- SC-2.3 Storing secrets on a device and in services; rotation.
+- SC-3.1 Threat-model a networked embedded device with STRIDE.
+- SC-3.2 Secure boot and signed updates: chain of trust, rollback protection.
+- SC-3.3 Coverage-guided fuzzing: how it works; what to fuzz in a binary protocol parser.
+- SC-4.1 SBOMs and vulnerability management (CVE triage) for an embedded Linux product.
+- SC-4.2 Timing side channels; constant-time comparison.
+
+### DB — Databases
+
+- DB-1.1 Relational model, keys, normalization basics.
+- DB-2.1 How a B-tree index speeds up a query; when an index hurts.
+- DB-2.2 ACID; isolation levels and the anomalies each permits.
+- DB-3.1 MVCC vs lock-based concurrency control.
+- DB-3.2 Time-series data: storage layout, retention, downsampling.
+- DB-3.3 Key-value stores: in-memory vs persistent, durability trade-offs.
+- DB-4.1 Write-ahead logging and crash recovery.
+- DB-4.2 Reading a query plan (`EXPLAIN`).

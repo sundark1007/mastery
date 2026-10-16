@@ -34,6 +34,9 @@ Levels use the scale in `CLAUDE.md`. "Calibration" compares confidence with corr
 | CL | Cloud architecture | ? | ? | — |
 | IO | IPC, MQTT & IoT | ? | ? | — |
 | AI | AI-assisted engineering | ? | ? | — |
+| CP | C and systems programming | ? | ? | — |
+| SC | Security | ? | ? | — |
+| DB | Databases | ? | ? | — |
 
 ## Strengths
 
