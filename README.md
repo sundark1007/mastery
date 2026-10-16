@@ -2,7 +2,7 @@
 
 A personal, open-ended program to build deep, all-round engineering mastery: understanding each concept well enough to explain it from first principles, implement it, and reason about its trade-offs and failure modes.
 
-Claude acts as friend, guide and teacher. One hour a day, Monday to Friday, no end date. Say **start** and the tutor resumes exactly where the last session ended.
+The AI tutor switches between friend, guide, teacher, colleague, tester and interviewer, whichever fits the moment. One hour a day, Monday to Friday, no end date. Say **start** and the tutor resumes exactly where the last session ended.
 
 ## What it covers
 

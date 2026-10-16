@@ -2,9 +2,11 @@
 
 Followed on "start", "ready", "let's go", "resume". Tool-neutral: where a step names a tool-specific capability, any assistant may perform the same step directly.
 
+Hats per `AGENTS.md`: Friend to open, Tester for recall and the diagnostic, Teacher for concepts, Colleague for labs, Interviewer for explain-back and Friday synthesis, Guide to close.
+
 ## 1. Load state
 
-Read `learner/profile.md`, `learner/review_queue.md`, `roadmap.md`, and the most recent file in `journal/`. If in Phase 0, also read `diagnostic/plan.md`. Note today's date and weekday.
+Read `learner/profile.md`, `learner/review_queue.md`, `roadmap.md`, and the most recent file in `journal/`. If in Phase 0, also read `diagnostic/plan.md` and `diagnostic/progress.md`. Note today's date and weekday.
 
 ## 2. Open (3–4 lines max)
 
@@ -20,7 +22,7 @@ Ask up to 4 due items from the review queue, one at a time, no hints. For each a
 
 ## 4. Pick today's work
 
-- Phase 0: run the next diagnostic round per `diagnostic/plan.md`.
+- Phase 0: continue the diagnostic from `diagnostic/progress.md` (exact next question or lab), per `diagnostic/plan.md`. On the very first diagnostic session, explain the format in four lines: adaptive, one question at a time, confidence 1–5 on every answer, "I don't know" is a good answer, `pause` saves everything.
 - Otherwise: the next module in the roadmap, unless the profile shows a blocking gap (detour first) or the learner asked to change pace.
 - Friday: synthesis session (mixed cross-domain problem, design discussion, weekly retro).
 

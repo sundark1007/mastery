@@ -9,7 +9,7 @@ Goal: an evidence-based level for every domain, with no guessing about what the 
 - **"I don't know" is a valid, valued answer.** Guessing is discouraged; partial reasoning is welcome.
 - **Answers are verbal or short code**, one question at a time. After each answer give a one- or two-line correction or confirmation, so no misconception survives. Save full teaching for the curriculum.
 - **Follow-ups beat new questions:** "why?", "what breaks if…?", "where have you seen this?" reveal depth faster.
-- **Record as you go** in the journal: question ID, correct/partial/wrong, confidence, notable reasoning. Questions about the learner's own experience are discussed live; record only the quality of the answer, never work details (work boundary in `AGENTS.md`).
+- **Record as you go** in `diagnostic/progress.md` after every answer: question ID, result (correct/partial/wrong/unknown), confidence, a short note on reasoning, and the next question. This makes the diagnostic resumable mid-domain at any point. Questions about the learner's own experience are discussed live; record only the quality of the answer, never work details (work boundary in `AGENTS.md`).
 - After all rounds: fill the domain map in `learner/profile.md`, seed the review queue with every miss, and re-order `roadmap.md` by gaps.
 
 ## Rounds (~1 session each)
